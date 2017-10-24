@@ -1,0 +1,40 @@
+#Dependency: pyteomics
+#Installation: pyteomics
+sudo apt-get install python-setuptools python-dev build-essential
+sudo easy_install pip
+sudo pip install lxml numpy matplotlib pyteomics
+
+#Download uniprot data from following in tab separated format (already done. See ./codes/data/uniprot-all.tab.)
+#Last updated on October 23, 2017. Update this file for the most recent reference data).
+ 
+http://www.uniprot.org/uniprot/?query=*&fil=organism%3A%22Homo+sapiens+%28Human%29+%5B9606%5D%22+AND+reviewed%3Ayes
+
+#Run PEV
+python ./codes/pev.py -i ./input/colon100 -d ./input/colon_psm/ -s ./input/colon_spec/ -o ./results/ -p ./input/parameter.colon
+
+#-i: Proteogenomics event list
+#-d: Proteogenomics database search directory 
+#-s: Proteogenomics spectra directory
+#-o: PEV validation output directory
+#-p: PEV parameter file; Follow the comments in ./input/parameter.colon; Make changes based on file types and PTM to be considered 
+
+#Understanding PEV output
+# ressult.txt in -p output directory gives the results.
+#Following are the fields in result.txt file
+Event_ID: Same ID as in -i input event file
+Novel_Peptide: Peptide sequence from -i input event file
+Rescored_Novel_Peptide: Novel_Peptide sequence from MSGF+ search. Should be the same as Novel_Peptide or NA (indicates not found from MSGF+ search). 
+Alternative_Reference_Sequence: Reference sequence reported from MSGF+ search
+UniProt_ID_Alternative_Reference: Protein ID (UniProt) for reported reference sequence
+Variant_Type: Description of variation type from -i input event file 
+PEV_Score: Computed PEV score 
+PEV_Category: PEV+ when PEV_Score>0. This indicates proteogenomics (novel) peptide is better than reference peptides. PEV- when PEV_Score<0. This indicates reference peptide is better than novel peptide. PEVzero when PEV_Score==0. This indicates novel peptide and reference peptides are equally posible match. PEVexact-reference indicates that input novel peptide is matched exactly with a reference peptide sequence. PEVunscored indicates all the MSGF+ PSMs are reported with a spectrum level P-value greater than 0.05 (insignificant).
+All_Higher_Scored_Alternative_Reference: When one or more reference peptide is better than novel peptide this shows the better scored reference peptides
+All_Higher_Scored_Alternative_Reference_ProteinID: Protein ID (UniProt) for all the better scored reference peptides.
+
+
+
+
+
+
+

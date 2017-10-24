@@ -1,0 +1,61 @@
+#Parameter starts with p:
+#Make changes according to input files
+
+#s_type=spectrum file type; mgf: s_type=1; mzml: s_type=2; mzxml: s_type=3
+p:s_type=2
+
+#d_pep=column number for novel peptide in .psm file
+p:d_pep=8
+
+#d_index=column number for spectrum index number (starting at index 0) in .psm file
+p:d_index=1
+
+#d_index=column number for spectrum file name in .psm file
+p:d_fname=0
+
+#i_ev=column number for row id in .event file
+p:i_ev=0
+
+#i_type=column number for event type description/annotation in .event file
+p:i_type=1
+
+#i_seq=column number for novel peptide sequence in .event file
+p:i_seq=2
+
+#PTM setting
+#NumMods=x for maximum x PTM for datqabase search. For large x value search take longer time
+m:NumMods=1
+
+#Constant modifications start with c:
+c:57.021,C,fix,any,Carbamidomethyl 		# Fixed Carbamidomethyl C
+c:144.0,K,fix,any,ITRAQ4plex 		# Fixed ITRAQ4plex at K; must un-comment for CPTAC breast and ovarian
+c:144.0,*,fix,N-term,ITRAQ8plex 		# Fixed ITRAQ4plex at N-Term; must un-comment for CPTAC breast and ovarian
+
+# Variable Modifications start with v:
+v:15.994915,MWP,opt,any,Oxidation				# Oxidation M
+v:0.984016,NQ,opt,any,Deamidated			# Negative numbers are allowed.
+v:57.021464,*,opt,N-term,Carbamidomethyl		# Variable Carbamidomethyl N-term
+v:57.021464,KH,opt,any,Carbamidomethyl		# Variable Carbamidomethyl K
+v:H-2O-1,E,opt,N-term,Glu->pyro-Glu			# Pyro-glu from E
+v:-18.010565,Q,opt,N-term,Gln->pyro-Glu			# Pyro-glu from Q
+v:42.01056,*,opt,Prot-N-term,Acetyl			# Acetylation Protein N-term
+v:42.01056,K,opt,any,Acetyl			# Acetylation K 
+v:14.01565,HDEKR,opt,any,Methyl				# Methylation
+v:79.966331,STY,opt,any,Phospho			# Phosphorylation STY
+v:31.989829,MW,opt,any,Dioxidation
+v:3.994915,W,opt,any,Trp->Kynurenin		   #"Trp->Kynurenin" 	site="W"
+v:43.005814,*,opt,N-term,Carbamyl                 #N-term  Carbamyl            
+v:43.005814,RK,opt,any,CarbamylRK
+v:27.994915,*,opt,N-term,Formylnterm                   #N-term Formyl
+v:27.994915,ST,opt,any,Formyl                    #S and T Formyl 
+v:21.981943,DE,opt,any,Cation:Na               
+v:37.955882,DE,opt,any,Cation:K  
+v:53.919289,DE,opt,any,Cation:Fe[II]
+v:125.896648,Y,opt,any,Iodination
+v:183.035399,YK,opt,any,AEBS
+v:-33.987721,C,opt,any,Dehydroalanine
+v:-18.010565,DST,opt,any,waterloss
+v:-17.026549,N,opt,any,Loss_of_ammonia
+
+#msgf+ search parameter. See msgf+ parameter setting instruction. This setting will work for semi-tryptic trypsin digested peptide
+n:-t 1000ppm -m 0 -inst 0 -e 1 -ti -1,2 -ntt 2 -tda 0 -n 8 -thread 7
