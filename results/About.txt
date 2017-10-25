@@ -1,2 +1,3 @@
-#Output files are stored here with -o ./results
+#Output files are stored here with -o ./results/
 #Creation of new output directory is recomended. Use -o directory to store output files
+#Results with annotations are stored in file result.txt

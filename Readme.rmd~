@@ -1,0 +1,104 @@
+Proteogenomics Event Validation (PEV)
+-------------------------------------
+
+Source code for PEV. Follow the description to start using this package. 
+
+
+Download PEV
+------------
+
+From linux terminal create a work directory then perform git pull.
+
+1. mkdir d_name
+2. cd d_name
+3. git init
+4. git pull https://github.com/abhatta3/PEV-Score  
+
+Dependency
+-----------
+1. pyteomics
+
+
+Install pyteomics
+-----------------------------
+sudo apt-get install python-setuptools python-dev build-essential
+sudo easy_install pip
+sudo pip install lxml numpy matplotlib pyteomics
+
+Download uniprot data 
+-----------------------
+There is already a uniprot human protein data set stored as tab separated file. See ./codes/data/uniprot-all.tab. Last updated on October 23, 2017. To update this file dowload data in a tab separated two column (uniprotID[tab]sequence) file from: 
+ 
+http://www.uniprot.org/uniprot/?query=*&fil=organism%3A%22Homo+sapiens+%28Human%29+%5B9606%5D%22+AND+reviewed%3Ayes
+
+Keep the filename uniprot-all.tab and store the file inside ./codes/data/
+
+Unzip sample spectra file
+--------------------------- 
+A spectra file named ./input/colon_spec/new_colon_nature_original_extracted_spec.mgf.zip is stored for PEV execution on the following example. Unzip new_colon_nature_original_extracted_spec.mgf.zip in the ./input/colon_spec/ folder and delete new_colon_nature_original_extracted_spec.mgf.zip
+
+Run PEV
+-------
+Example 1: python ./codes/pev.py -i ./input/colon100.event -d ./input/colon_psm/ -s ./input/colon_spec/ -o ./results/ -p ./input/parameter.colon
+Example 2: python ./codes/pev.py -i ./input/brca2.event -d ./input/brca_psm/ -s ./input/brca_spec/ -o ./results/ -p ./input/parameter.brca
+
+* For Example 2 there are two sample spectra file stored as a split compressed files in ./input/brca_spec/. Before running example 2 regenerate the original files by
+
+cat TCGA_A2-A0SW_AO-A0JL_BH-A0BV_117C_W_BI_20131024_H-PM_f03.mzML.gz_*|gunzip -c>TCGA_A2-A0SW_AO-A0JL_BH-A0BV_117C_W_BI_20131024_H-PM_f03.mzM
+
+and 
+
+cat TCGA_A8-A09G_C8-A131_C8-A134_117C_W_BI_20131011_H-PM_f21.mzML_*|gunzip -c>TCGA_A8-A09G_C8-A131_C8-A134_117C_W_BI_20131011_H-PM_f21.mzML
+
+Also remove the split files from the directory
+
+-i: Proteogenomics event list. A tab separated file. 
+    See example in ./input/colon.event
+    a. Column 1 - Unique event id for annotation, 
+    b. Column 2 - Proteogenomics event description, 
+    c. Column 3 - Peptide sequence
+    
+-d: Proteogenomics database search directory. Each file in the directory represents peptide spectra match (PSM) results for input event list. Each file should have 9 or more column. 
+    See example in ./input/colon_psm. Extra columns are filled with NA.  
+    a. Column 1 - spectra file name for PSM, 
+    b. Column 2 - index number (base 0) for the spectrum in the spectra file for PSM, 
+    c. Column 9 - Identified Peptide sequence
+
+-s: Proteogenomics spectra directory. Each file is a spectra file in mgf/mzML/mzXML format. Unzip sample spectra file in ./input/colon_spec/ to see an example.
+
+-o: PEV output directory. result.txt reports final validation results. Additional files are generated from intermediate steps. 
+
+-p: PEV parameter file. PEV execution is controlled from this file. See example in ./input/parameter.colon. User make changes in the parameter file based on file types and PTMs to be considered. 
+
+Understanding PEV output
+----------------------------
+ressult.txt in -p output directory gives PEV validation output. 
+
+Following are the fields in result.txt file:
+
+1. Event_ID: Same ID as in -i input event file
+
+2. Novel_Peptide: Peptide sequence from -i input event file
+
+3. Rescored_Novel_Peptide: Novel_Peptide sequence from MSGF+ search. Should be the same as Novel_Peptide or NA (indicates not found from MSGF+ search). 
+
+4. Alternative_Reference_Sequence: Reference sequence reported from MSGF+ search
+
+5. UniProt_ID_Alternative_Reference: Protein ID (UniProt) for reported reference sequence
+
+6. Variant_Type: Description of variation type from -i input event file 
+
+7. PEV_Score: Computed PEV score 
+
+8. PEV_Category: PEV+ when PEV_Score>0. This indicates proteogenomics (novel) peptide is better than reference peptides. PEV- when PEV_Score<0. This indicates reference peptide is better than novel peptide. PEVzero when PEV_Score==0. This indicates novel peptide and reference peptides are equally posible match. PEVexact-reference indicates that input novel peptide is matched exactly with a reference peptide sequence. PEVunscored indicates all the MSGF+ PSMs are reported with a spectrum level P-value greater than 0.05 (insignificant).
+
+9. All_Higher_Scored_Alternative_Reference: When one or more reference peptide is better than novel peptide this shows the better scored reference peptides
+
+10. All_Higher_Scored_Alternative_Reference_ProteinID: Protein ID (UniProt) for all the better scored reference peptides.
+
+
+
+
+
+
+

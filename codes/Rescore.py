@@ -239,6 +239,9 @@ def rescore(infile,outfile,scan_map_file,singlemgf,novel_list,key_out,fixed_mod,
 
     output.close()
     
+    from build_css_html_table_v5_new import CSSHTMLBuildFilter
+
+    CSSHTMLBuildFilter(outfile)
     
         
     

@@ -1,0 +1,2 @@
+#Output files are stored here with -o ./results
+#Creation of new output directory is recomended. Use -o directory to store output files
