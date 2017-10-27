@@ -139,7 +139,7 @@ def main(argv):
 
     start_time = time.time()
     
-    rescore(tsvout,outputfile,extracted_psm_list,singlemgf,novel_list,key_out,fixed_mod,ref_list) #,pep_by_kw)
+    rescore(tsvout,outputfile,extracted_psm_list,singlemgf,novel_list,key_out,fixed_mod,ref_list,ms_dict) #,pep_by_kw)
 
     print("Rescore Executes in (seconds) ---\t%s\n" %(time.time() - start_time))
 

@@ -7,86 +7,70 @@ def CSSHTMLBuildFilter(inputfile,spect_task_id=''):
     <html>\n\
     <head>\n\
 
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" type="text/css" rel="stylesheet">\n\
-    <script type="text/javascript" src="https://dl.dropboxusercontent.com/u/63775276/sorttable.js"></script>\n\
-    <style type="text/css">\n\
-    table.sortable {\n\
-        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;\n\
-        width: 100%;\n\
-        border-collapse: collapse;\n\
-    }\n\
-    \n\
-    table.sortable td, #mutated_peptides th {\n\
-        font-size: 1em;\n\
-        border: 2px solid #000000;\n\
-        padding: 2px 3px 2px 3px;\n\
-    }\n\
-    \n\
-    table.sortable tr:nth-child(odd){background-color: #f2f2f2}\n\
-    \n\
-    table.sortable th {\n\
-        font-size: 1em;\n\
-        text-align: center;\n\
-        padding-top: 2px;\n\
-        padding-bottom: 2px;\n\
-        background-color: #4CAF50;\n\
-        color: #ffffff;\n\
-        border: 2px solid #000000;\n\
-    }\n\
-    \n\
-    table.sortable td.center {\n\
-        text-align: center;\n\
-    }\n\
-    \n\
-    table.sortable td.canceratlas {\n\
-        color: #8cd68f;\n\
-        background-color: #8cd68f;\n\
-        text-align: center;\n\
-    }\n\annotfile
-    \n\
-    </style>\n\
 
+    <script src="../sorttable.js"></script>\n\
+
+    <style type="text/css">\n\
+
+/* Sortable tables */
+table.sortable thead {\n\
+    background-color:#eee;\n\
+    color:#666666;\n\
+    font-weight: bold;\n\
+    cursor: default;\n\
+}\n\
+ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+    content: '\\25B4\\25BE'
+}\n\
+
+#customers {\n\
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;\n\
+    border-collapse: collapse;\n\
+    width: 100%;\n\
+}\n\
+
+#customers td, #customers th {\n\
+    border: 1px solid #ddd;\n\
+    padding: 8px;\n\
+}\n\
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}\n\
+#customers tr:hover {background-color: #ddd;}\n\
+#customers th {\n\
+    padding-top: 12px;\n\
+    padding-bottom: 12px;\n\
+    text-align: left;\n\
+    background-color: #4CAF50;\n\
+    color: white;\n\
+}\n\
+\n\
+    </style>\n\
 
     </head>\n\
     <body>\n\
 
-       <div class="form-group">\n\
-            <div class="col-sm-12">\n\
-                <span class="help-block">Sort table with Left Click at Header. @ Click event to see spectra. You can select with <b>Ctrl</b>, <b>Shift</b>, <b>Common</b> Or <b>Ctrl + A</b>.</span>\n\
-            </div>\n\
-        </div>\n\
+
+  <h1  align="center">Proteogenomics Event Validation (PEV) Results</h1>\n\
 
 
-        <div class="form-group">\n\
-            <div class="col-sm-12">\n\
-                <h1 class="text-center">Proteogenomics Event Validation (PEV) Results</h1>\n\
-            </div>\n\
-        </div>\n\
-        <div class="form-group" style="border: 1px solid #ddd">\n'''
-
-    table_column_name ='''<table id="table1"  class="sortable">\n\
+<table class="sortable" id="customers">\n\
     	
     <thead>\n\
       <tr>\n\
-        <th><a href=" " title="Event identifier: Same ID as in -i input event file." style="background-color:#FFFFFF;color:#000000;text-decoration:none">Event ID<br>[@]</a></th>\n\
-        <th><a href=" " title="Novel peptide sequence from input:  Peptide sequence from -i input event file." style="background-color:#FFFFFF;color:#000000;text-decoration:none">Novel Peptide</a></th>\n\
-        <th><a href=" " title="Rescored Novel Peptide: Novel_Peptide sequence from MSGF+ search. Should be the same as Novel_Peptide or NA (indicates not found from MSGF+ search)." style="background-color:#FFFFFF;color:#000000;text-decoration:none">Rescored Novel Peptide</a></th>\n\
-        <th><a href=" " title="Alternative Reference Sequence: Reference sequence reported from MSGF+ search." style="background-color:#FFFFFF;color:#000000;text-decoration:none">Alternative Reference Sequence</a></th>\n\
-        <th><a href=" " title="UniProt ID for Alternative Reference: Protein ID (UniProt) for reported reference sequence. " style="background-color:#FFFFFF;color:#000000;text-decoration:none">UniProtID</a></th>\n\
-        <th><a href=" " title="Variant Type: Description of variation type from -i input event file. " style="background-color:#FFFFFF;color:#000000;text-decoration:none">Variant Type</a></th>\n\
-
-        <th><a href=" " title="PEV Score: Computed PEV score. " style="background-color:#FFFFFF;color:#000000;text-decoration:none">PEV Score</a></th>\n\
-        <th><a href=" " title="PEV Category: PEV+ when PEV_Score>0. This indicates proteogenomics (novel) peptide is better than reference peptides. PEV- when PEV_Score<0. This indicates reference peptide is better than novel peptide. PEVzero when PEV_Score==0. This indicates novel peptide and reference peptides are equally posible match. PEVexact-reference indicates that input novel peptide is matched exactly with a reference peptide sequence. PEVunscored indicates all the MSGF+ PSMs are reported with a spectrum level P-value greater than 0.05 (insignificant). 1 is good and represent unambiguous mapping.  " style="background-color:#FFFFFF;color:#000000;text-decoration:none">PEV Category</a></th>\n\
-        <th><a href=" " title="All Higher Scored Alternative Reference: When one or more reference peptide is better than novel peptide this shows the better scored reference peptides. " style="background-color:#FFFFFF;color:#000000;text-decoration:none">Alternatives</a></th>\n\
-        <th><a href=" " title="All Higher Scored Alternative Reference ProteinID: Protein ID (UniProt) for all the better scored reference peptides." style="background-color:#FFFFFF;color:#000000;text-decoration:none">AlternativesID</a></th>\n\
-
-
+        <th><a href=" " title="Event identifier: Same ID as in -i input event file." >EventID</a></th>\n\
+        <th><a href=" " title="Novel peptide sequence from input:  Peptide sequence from -i input event file.">Novel_Peptide</a></th>\n\
+        <th><a href=" " title="Rescored Novel Peptide: Novel_Peptide sequence from MSGF+ search. Should be the same as Novel_Peptide or NA (indicates not found from MSGF+ search).">Rescored Novel Peptide</a></th>\n\
+        <th><a href=" " title="Alternative Reference Sequence: Reference sequence reported from MSGF+ search.">Alternative_Reference_Sequence</a></th>\n\
+        <th><a href=" " title="UniProt ID for Alternative Reference: Protein ID (UniProt) for reported reference sequence.">UniProtID</a></th>\n\
+        <th><a href=" " title="Variant Type: Description of variation type from -i input event file. ">Variant_Type</a></th>\n\
+        <th><a href=" " title="PEV Score: Computed PEV score.">PEV_Score</a></th>\n\
+        <th><a href=" " title="PEV Category: PEV+ when PEV_Score>0. This indicates proteogenomics (novel) peptide is better than reference peptides. PEV- when PEV_Score<0. This indicates reference peptide is better than novel peptide. PEVzero when PEV_Score==0. This indicates novel peptide and reference peptides are equally posible match. PEVexact-reference indicates that input novel peptide is matched exactly with a reference peptide sequence. PEVunscored indicates all the MSGF+ PSMs are reported with a spectrum level P-value greater than 0.05 (insignificant). 1 is good and represent unambiguous mapping.">PEV_Category</a></th>\n\
+        <th><a href=" " title="All Higher Scored Alternative Reference: When one or more reference peptide is better than novel peptide this shows the better scored reference peptides." >Alternatives</a></th>\n\
+        <th><a href=" " title="All Higher Scored Alternative Reference ProteinID: Protein ID (UniProt) for all the better scored reference peptides.">AlternativesID</a></th>\n\
       </tr>\n\
      </thead>\n\
      <tbody>\n'''
      
-     
-
     #<th>Reference_Peptide</th>\n\
     htmlfile=inputfile+'.html' 
         
@@ -94,8 +78,6 @@ def CSSHTMLBuildFilter(inputfile,spect_task_id=''):
         
         data_lines = data.readlines()[1:]
         html_file.write(css_table_header)
-
-        html_file.write(table_column_name)
 
             
         for item in data_lines:
@@ -110,7 +92,7 @@ def CSSHTMLBuildFilter(inputfile,spect_task_id=''):
                 if dt=='':
                     dt='-'
                     
-                html_file.write('    <td class="center">%s</td>\n'%(dt))
+                html_file.write('    <td align="center">%s</td>\n'%(dt))
                         
             html_file.write('  </tr>\n')
         html_file.write('</tbody>\n</table>\n\n</div>\n</body>\n</html>\n')

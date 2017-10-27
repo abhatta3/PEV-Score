@@ -39,7 +39,8 @@ def fmod(seq,itq):
     return val
 
     
-def rescore(infile,outfile,scan_map_file,singlemgf,novel_list,key_out,fixed_mod,ref_list):
+def rescore(infile,outfile,scan_map_file,singlemgf,novel_list,key_out,fixed_mod,ref_list,ms_dict):
+    pevscan={}
     support={}
     for line in key_out:
         if '#' in line:
@@ -212,18 +213,24 @@ def rescore(infile,outfile,scan_map_file,singlemgf,novel_list,key_out,fixed_mod,
             m_seq=''
             mid_seq=''
 
-        if cl=='PEV-' or cl=='PEVzero':
-            ind=str(int(event_dic[event]['ind'].split('=')[1])+1)
-            if nseq!='NA':
-                i_nseq=fmod(nseq[2:-2],fixed_mod)
-            else:
-                i_nseq='NOTFOUND'
-    
-            if mseq!='NA':            
-                i_mseq=fmod(mseq[2:-2],fixed_mod)
-            else:
-                i_mseq='NOTFOUND'
-            outputi.write("%s\t%s\t%s\t%s\n" %(event,i_nseq,i_mseq,ind))
+        #if cl=='PEV-' or cl=='PEVzero':
+        ind=str(int(event_dic[event]['ind'].split('=')[1])+1)
+        if nseq!='NA':
+            i_nseq=fmod(nseq[2:-2],fixed_mod)
+        else:
+            i_nseq='NOTFOUND'
+
+        if mseq!='NA':            
+            i_mseq=fmod(mseq[2:-2],fixed_mod)
+        else:
+            i_mseq='NOTFOUND'
+        
+        outputi.write("%s\t%s\t%s\t%s\n" %(event,i_nseq,i_mseq,ind))
+            
+        indi=int(event_dic[event]['ind'].split('=')[1])
+
+            
+        pevscan[indi]={'ev':event,'ns':i_nseq,'rs':i_mseq}
             
 
         output.write("%s\t%s\t%s\t%s\t%s\t%s\t%0.4f\t%s\t%s\t%s\n" %(event,event_pep[event],nseq,mseq,auid,event_list[event],pev,cl,m_seq,mid_seq))
@@ -239,9 +246,10 @@ def rescore(infile,outfile,scan_map_file,singlemgf,novel_list,key_out,fixed_mod,
 
     output.close()
     
-    from build_css_html_table_v5_new import CSSHTMLBuildFilter
+    
+    from build_html_table import CSSHTMLBuildFilter
 
-    CSSHTMLBuildFilter(outfile)
+    CSSHTMLBuildFilter(outfile,singlemgf,pevscan,ms_dict,fixed_mod)
     
         
     

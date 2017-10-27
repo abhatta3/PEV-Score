@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+
+
+    <script src="../sorttable.js"></script>
+
+    <style type="text/css">
+
+/* Sortable tables */
+table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
+}
+ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+    content: '\25B4\25BE'
+}
+
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+#customers tr:hover {background-color: #ddd;}
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+    </style>
+
+    </head>
+    <body>
+
+
+  <h1 align="center">Proteogenomics Event Validation (PEV) Results</h1>
+
+
+<table class="sortable" id="customers">
+    	
+    <thead>
+      <tr>
+        <th><a href=" " title="Event identifier: Same ID as in -i input event file." >EventID</a></th>
+        <th><a href=" " title="Novel peptide sequence from input:  Peptide sequence from -i input event file.">Novel_Peptide</a></th>
+        <th><a href=" " title="Rescored Novel Peptide: Novel_Peptide sequence from MSGF+ search. Should be the same as Novel_Peptide or NA (indicates not found from MSGF+ search).">Rescored Novel Peptide</a></th>
+        <th><a href=" " title="Alternative Reference Sequence: Reference sequence reported from MSGF+ search.">Alternative_Reference_Sequence</a></th>
+        <th><a href=" " title="UniProt ID for Alternative Reference: Protein ID (UniProt) for reported reference sequence.>UniProtID</a></th>
+        <th><a href=" " title="Variant Type: Description of variation type from -i input event file. ">Variant_Type</a></th>
+        <th><a href=" " title="PEV Score: Computed PEV score.">PEV_Score</a></th>
+        <th><a href=" " title="PEV Category: PEV+ when PEV_Score>0. This indicates proteogenomics (novel) peptide is better than reference peptides. PEV- when PEV_Score<0. This indicates reference peptide is better than novel peptide. PEVzero when PEV_Score==0. This indicates novel peptide and reference peptides are equally posible match. PEVexact-reference indicates that input novel peptide is matched exactly with a reference peptide sequence. PEVunscored indicates all the MSGF+ PSMs are reported with a spectrum level P-value greater than 0.05 (insignificant). 1 is good and represent unambiguous mapping.">PEV_Category</a></th>
+        <th><a href=" " title="All Higher Scored Alternative Reference: When one or more reference peptide is better than novel peptide this shows the better scored reference peptides." >Alternatives</a></th>
+        <th><a href=" " title="All Higher Scored Alternative Reference ProteinID: Protein ID (UniProt) for all the better scored reference peptides.">AlternativesID</a></th>
+      </tr>
+     </thead>
+     <tbody>
+  <tr>
+    <td align="center">24</td>
+    <td align="center">SAVGELSEDSSNVVHLIK</td>
+    <td align="center">-.SAVGELSEDSSNVVHLIK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">26.3893</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">25</td>
+    <td align="center">VGELSEDSSNVVHLIK</td>
+    <td align="center">-.VGELSEDSSNVVHLIK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">16.7661</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">26</td>
+    <td align="center">GELSEDSSNVVHLIK</td>
+    <td align="center">-.GELSEDSSNVVHLIK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">20.6413</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">27</td>
+    <td align="center">LSEDSSNVVHLIK</td>
+    <td align="center">-.LSEDSSNVVHLIK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">17.0386</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">20</td>
+    <td align="center">MQLLQIITTEK</td>
+    <td align="center">-.M+16QLLQIITTEK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">16.2597</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">21</td>
+    <td align="center">DQILLGPTYATPK</td>
+    <td align="center">-.DQILLGPTYATPK.-</td>
+    <td align="center">K.DQLLLGPTYATPK.V</td>
+    <td align="center">P55084</td>
+    <td align="center">mutation</td>
+    <td align="center">-0.0000</td>
+    <td align="center">PEVzero</td>
+    <td align="center">-.QGNIKICDIIS+28K.W;</td>
+    <td align="center">Q8IVE3;</td>
+  </tr>
+  <tr>
+    <td align="center">22</td>
+    <td align="center">VLEVDTQGTVVCSLDR</td>
+    <td align="center">-.VLEVDTQGTVVCSLDR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">17.6114</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">23</td>
+    <td align="center">EVTVNVLSPR</td>
+    <td align="center">-.EVTVNVLSPR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">6.0166</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">28</td>
+    <td align="center">NPGAVNACHLSCSALLQDNIADAVACAK</td>
+    <td align="center">-.NPGAVNACHLSCSALLQDNIADAVACAK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">6.9019</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">29</td>
+    <td align="center">YTAIPIVGQVFQSQCK</td>
+    <td align="center">-.YTAIPIVGQVFQSQCK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">24.1162</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">4</td>
+    <td align="center">LAGSEVPQDR</td>
+    <td align="center">-.LAGSEVPQDR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">5.9008</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">8</td>
+    <td align="center">GEAGAAGPAGPAGPQGSPGER</td>
+    <td align="center">-.GEAGAAGPAGPAGPQGSPGER.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">17.8430</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">59</td>
+    <td align="center">DGFVQDEGPMFPVGK</td>
+    <td align="center">-.DGFVQDEGPMFPVGK.-</td>
+    <td align="center">R.LGYSIP+16SRSGASGLDK.R</td>
+    <td align="center">O95484</td>
+    <td align="center">mutation</td>
+    <td align="center">-2.4576</td>
+    <td align="center">PEV-</td>
+    <td align="center">R.LGYSIP+16SRSGASGLDK.R;</td>
+    <td align="center">O95484;</td>
+  </tr>
+  <tr>
+    <td align="center">58</td>
+    <td align="center">IALLLMASQEPQR</td>
+    <td align="center">-.IALLLMASQEPQR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">8.4992</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">55</td>
+    <td align="center">DFYVVEPLAFEGTPEQK</td>
+    <td align="center">-.DFYVVEPLAFEGTPEQK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">23.4713</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">54</td>
+    <td align="center">HVGDLGNVTAAK</td>
+    <td align="center">-.HVGDLGNVTAAK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">14.8333</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">57</td>
+    <td align="center">GILVDTSR</td>
+    <td align="center">-.GILVDTSR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">6.4104</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">56</td>
+    <td align="center">LTSDLTFACER</td>
+    <td align="center">NA</td>
+    <td align="center">K.GENGEKD-18NILSR.K</td>
+    <td align="center">Q9BXT6</td>
+    <td align="center">mutation</td>
+    <td align="center">-6.5285</td>
+    <td align="center">PEV-</td>
+    <td align="center">K.GENGEKD-18NILSR.K;</td>
+    <td align="center">Q9BXT6;</td>
+  </tr>
+  <tr>
+    <td align="center">51</td>
+    <td align="center">VPIPWVSGTSASTPVFGGIISLINEHR</td>
+    <td align="center">-.VPIPWVSGTSASTPVFGGIISLINEHR.-</td>
+    <td align="center">R.VPIPWVSGTSASTPVFGGILSLINEHR.I</td>
+    <td align="center">O14773</td>
+    <td align="center">mutation</td>
+    <td align="center">-0.0000</td>
+    <td align="center">PEVzero</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">50</td>
+    <td align="center">FIQENVFVAANHNASPLSIK</td>
+    <td align="center">-.FIQENVFVAANHNASPLSIK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">3.8488</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">53</td>
+    <td align="center">VLQQFADNDVPR</td>
+    <td align="center">-.VLQQFADNDVPR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">10.9490</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">52</td>
+    <td align="center">VVLVTSAGAGLGR</td>
+    <td align="center">-.VVLVTSAGAGLGR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">21.0844</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">88</td>
+    <td align="center">STESLQTNVQR</td>
+    <td align="center">-.STESLQTNVQR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">21.6556</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">89</td>
+    <td align="center">NKSTESLQTNVQR</td>
+    <td align="center">-.NKSTESLQTNVQR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">10.5959</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">82</td>
+    <td align="center">TEFCHGFLEGK</td>
+    <td align="center">-.TEFCHGFLEGK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">17.0864</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">80</td>
+    <td align="center">VHSFPTLNFFPASADR</td>
+    <td align="center">-.VHSFPTLNFFPASADR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">9.6785</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">81</td>
+    <td align="center">ITEFCHGFLEGK</td>
+    <td align="center">-.ITEFCHGFLEGK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">18.5241</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">86</td>
+    <td align="center">AQLNVGNVLPVGTMPEGTIVCCLEEKPGDR</td>
+    <td align="center">-.AQLNVGNVLPVGTMPEGTIVCCLEEKPGDR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">20.1347</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">87</td>
+    <td align="center">KAQLNVGNVLPVGTMPEGTIVCCLEEKPGDR</td>
+    <td align="center">-.KAQLN+1VGNVLPVGTMPEGTIVCCLEEKPGDR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">18.5580</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">84</td>
+    <td align="center">EVGETLLYYSCR</td>
+    <td align="center">-.EVGETLLYYSCR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">14.0122</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">85</td>
+    <td align="center">CLMEEDEDAYKK</td>
+    <td align="center">-.CLMEEDEDAYKK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">4.3580</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">3</td>
+    <td align="center">CLAVYQAGAR</td>
+    <td align="center">-.CLAVYQAGAR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">11.3426</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">7</td>
+    <td align="center">VLLDGVQNLRAEDLVGK</td>
+    <td align="center">-.VLLDGVQNLRAEDLVGK.-</td>
+    <td align="center">K.VLLDGVQNP+16RAEDLVGK.S</td>
+    <td align="center">P01024</td>
+    <td align="center">mutation</td>
+    <td align="center">-0.0000</td>
+    <td align="center">PEVzero</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">100</td>
+    <td align="center">GQTGAILQNTVESLSK</td>
+    <td align="center">-.GQTGAILQNTVESLSK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">26.9738</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">39</td>
+    <td align="center">FNKPFVFLMIDQNTK</td>
+    <td align="center">-.FNKPFVFLMIDQNTK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">18.6707</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">38</td>
+    <td align="center">AVLTIDKK</td>
+    <td align="center">-.AVLTIDKK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">8.5900</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">33</td>
+    <td align="center">LTQAQIFDYSEIPNFPR</td>
+    <td align="center">-.LTQAQIFDYSEIPNFPR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">17.1791</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">31</td>
+    <td align="center">AAIQVLDDIEK</td>
+    <td align="center">-.AAIQVLDDIEK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">10.6853</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">30</td>
+    <td align="center">EVAQQAVDADVHAVGVSTLAAGHK</td>
+    <td align="center">-.EVAQQAVDADVHAVGVSTLAAGHK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">14.2881</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">37</td>
+    <td align="center">LQHLVNELTHDIITK</td>
+    <td align="center">-.LQHLVNELTHDIITK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">24.8502</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">36</td>
+    <td align="center">TGEATVASGIPAGWMGLDCGPESSKK</td>
+    <td align="center">-.TGEATVASGIPAGWMGLDCGPESSKK.-</td>
+    <td align="center">K.TGQ+1ATVASGIPAGWMGLDCGPESSKK.Y</td>
+    <td align="center">P00558</td>
+    <td align="center">mutation</td>
+    <td align="center">-0.0000</td>
+    <td align="center">PEVzero</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">35</td>
+    <td align="center">ACANPAAGSVILPENLR</td>
+    <td align="center">-.ACANPAAGSVILPENLR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">21.5496</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">34</td>
+    <td align="center">LTLDKLDVEGKR</td>
+    <td align="center">-.LTLDKLDVEGKR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">15.0472</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">60</td>
+    <td align="center">DFNHIDVELSLLGK</td>
+    <td align="center">-.DFNHIDVELSLLGK.-</td>
+    <td align="center">R.DFNHIN+1VELSLLGK.K</td>
+    <td align="center">P32969</td>
+    <td align="center">mutation</td>
+    <td align="center">-0.0000</td>
+    <td align="center">PEVzero</td>
+    <td align="center">R.DFN+1HINVELSLLGK.K;</td>
+    <td align="center">P32969;</td>
+  </tr>
+  <tr>
+    <td align="center">62</td>
+    <td align="center">FSLDALITNVLPFEK</td>
+    <td align="center">-.FSLDALITNVLPFEK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">12.6058</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">63</td>
+    <td align="center">KFSLDALITNVLPFEK</td>
+    <td align="center">-.KFSLDALITN+1VLPFEK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">19.5458</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">64</td>
+    <td align="center">LGSALATGNVVVMK</td>
+    <td align="center">-.LGSALATGNVVVMK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">25.3641</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">65</td>
+    <td align="center">HEPVGVCGQIIPWNFPLVVQGWK</td>
+    <td align="center">-.HEPVGVCGQIIPWNFPLVVQGWK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">6.4095</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">68</td>
+    <td align="center">EAGFPPGVVNIITGYGPTAGAAIAQHMDVDK</td>
+    <td align="center">-.EAGFPPGVVN+1IITGYGPTAGAAIAQHMDVDK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">31.6193</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">69</td>
+    <td align="center">ELGSIDGVQR</td>
+    <td align="center">-.ELGSIDGVQR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">11.8830</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">2</td>
+    <td align="center">FGNEVIPVTVAVK</td>
+    <td align="center">-.FGNEVIPVTVAVK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">13.1912</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">6</td>
+    <td align="center">KVLLDGVQNLR</td>
+    <td align="center">-.KVLLDGVQNLR.-</td>
+    <td align="center">R.KVLLDGVQNP+16R.A</td>
+    <td align="center">P01024</td>
+    <td align="center">mutation</td>
+    <td align="center">-0.0000</td>
+    <td align="center">PEVzero</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">99</td>
+    <td align="center">LLTQDEGPALVPGSR</td>
+    <td align="center">-.LLTQDEGPALVPGSR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">15.2299</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">98</td>
+    <td align="center">IDDIISGHKK</td>
+    <td align="center">-.IDDIISGHKK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">5.8979</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">91</td>
+    <td align="center">SEALPTDLPTPSAPDLTEPK</td>
+    <td align="center">-.SEALPTDLPTPSAPDLTEPK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">14.3109</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">90</td>
+    <td align="center">CALTGDEVKK</td>
+    <td align="center">-.CALTGDEVKK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">9.2846</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">93</td>
+    <td align="center">YPVDTLPTSK</td>
+    <td align="center">-.YPVDTLPTSK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">8.5336</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">92</td>
+    <td align="center">AQVELVGTADEATR</td>
+    <td align="center">-.AQVELVGTADEATR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">7.2714</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">95</td>
+    <td align="center">AQQEQLLLQQQLQQQQQQPPSQLCTAPASSHER</td>
+    <td align="center">-.AQQEQLLLQQQLQQQQQQPPSQLCTAPASSHER.-</td>
+    <td align="center">R.AQQEQLLLQKQLQQQQQ+1QPPSQLCTAPASSHER.A</td>
+    <td align="center">Q9Y2D5</td>
+    <td align="center">mutation</td>
+    <td align="center">-0.0000</td>
+    <td align="center">PEVzero</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">94</td>
+    <td align="center">TALALLDHPSEYAAR</td>
+    <td align="center">-.TALALLDHPSEYAAR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">5.3640</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">97</td>
+    <td align="center">FNISTDQR</td>
+    <td align="center">-.FNISTDQR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">2.9322</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">96</td>
+    <td align="center">LFEGNALLWR</td>
+    <td align="center">-.LFEGNALLWR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">13.0878</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">11</td>
+    <td align="center">ALEDVFDALEGK</td>
+    <td align="center">-.ALEDVFDALEGK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">19.4543</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">10</td>
+    <td align="center">FGGGSDAGSKGPMVSAQESQAQAILQQAR</td>
+    <td align="center">-.FGGGSDAGSKGP+16MVSAQESQAQAILQQAR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">20.3652</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">13</td>
+    <td align="center">HMTAVVK</td>
+    <td align="center">-.HMTAVVK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">8.7404</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">12</td>
+    <td align="center">KKPSEEEAAAAAGGPPGGPQVNPIPVTDEVV</td>
+    <td align="center">-.KKPSEEEAAAAAGGPPGGPQVNPIPVTDEVV.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">12.5647</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">15</td>
+    <td align="center">GISFDAAATSGGSASSEK</td>
+    <td align="center">-.GISFDAAATSGGSASSEK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">33.3300</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">14</td>
+    <td align="center">ITHVALDFWR</td>
+    <td align="center">-.ITHVALDFWR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">14.5789</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">17</td>
+    <td align="center">RAVPPNNSNAAEDDLPTVELQGLVPR</td>
+    <td align="center">-.RAVPPNNSNAAEDDLPTVELQGLVPR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">8.3794</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">19</td>
+    <td align="center">HMVPNEVVVQR</td>
+    <td align="center">-.HM+16VPNEVVVQR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">6.5257</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">18</td>
+    <td align="center">VAALTGLPFVTAPNKFEALAAR</td>
+    <td align="center">-.VAALTGLPFVTAPNKFEALAAR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">7.5236</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">48</td>
+    <td align="center">QAGLSNHLSGSER</td>
+    <td align="center">-.QAGLSN-17HLSGSER.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">8.7782</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">49</td>
+    <td align="center">FQYLLCVPSYDPTK</td>
+    <td align="center">-.FQ+1YLLCVPSYDPTK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">13.1305</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">46</td>
+    <td align="center">CPSPPMTNLISVGGQHQGVFGLPR</td>
+    <td align="center">-.CPSPPMTNLISVGGQHQGVFGLPR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">39.8842</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">47</td>
+    <td align="center">LRPEMEGPGSFTIFAPSNK</td>
+    <td align="center">-.LRPEMEGPGSFTIFAPSNK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">17.5364</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">44</td>
+    <td align="center">FEEGENSLLHLK</td>
+    <td align="center">-.FEEGENSLLHLK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">16.6477</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">45</td>
+    <td align="center">NTVEIFKFEEGENSLLHLK</td>
+    <td align="center">-.NTVEIFKFEEGENSLLHLK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">14.5959</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">42</td>
+    <td align="center">WERPFEVKDTEEEDFHVDQATTVK</td>
+    <td align="center">-.WERPFEVKDTEEEDFHVDQATTVK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">13.2428</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">43</td>
+    <td align="center">EEEDFHVDQATTVK</td>
+    <td align="center">-.EEEDFHVDQATTVK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">22.9590</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">40</td>
+    <td align="center">DTEEEDFHVDQATTVK</td>
+    <td align="center">NA</td>
+    <td align="center">-.SEELY+80TTIKIMASGIK.T</td>
+    <td align="center">Q13029</td>
+    <td align="center">mutation</td>
+    <td align="center">-4.6153</td>
+    <td align="center">PEV-</td>
+    <td align="center">-.ESEDR+43HYAMKVLSKK.K;-.SEELY+80TTIKIMASGIK.T;K.+28R+14FKMDRQGVTQVLSR.L;K.SEETNTEIVECILKR+43.G;R.+28MGKSLPGSPDGNGSSSCPT.-;-.SLFENQNITVIPSGFR+43.V;-.LQQHAAAAAAAAAAAAAGT-18FK.V;-.SSTATPSST+28PGTTWILTK.P;K.+43K+43LFIFQLIDGKVTVR.-;-.M+32AAAAELSLLEKSLGLSK.G;K.+28DSKESSVVKNVVDSSQK.P;R.SQ+1KFLIWLSDLLLMR.K;K.AYLKKY+183DPEVQLSK.S;</td>
+    <td align="center">Q7Z570;Q96JM7;Q13029;Q9HC84;P24592;Q96JB1;Q8N5S9;Q96RT8;Q9NW08;Q03164;P46013;O43324;Q8N9F7;</td>
+  </tr>
+  <tr>
+    <td align="center">41</td>
+    <td align="center">GKWERPFEVKDTEEEDFHVDQATTVK</td>
+    <td align="center">-.GKWERPFEVKDTEEEDFHVDQATTVK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">14.2041</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">1</td>
+    <td align="center">SISAFLVPMPTPGLTLGK</td>
+    <td align="center">-.SISAFLVPMPTPGLTLGK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">9.3735</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">5</td>
+    <td align="center">VLLDGVQNLR</td>
+    <td align="center">NA</td>
+    <td align="center">-.NPNFNT+80LVK.W</td>
+    <td align="center">Q9HC10</td>
+    <td align="center">mutation</td>
+    <td align="center">-9.3322</td>
+    <td align="center">PEV-</td>
+    <td align="center">-.NPNFNT+80LVK.W;K.VLLDGVQNP+16R.A;</td>
+    <td align="center">Q9HC10;P01024;</td>
+  </tr>
+  <tr>
+    <td align="center">77</td>
+    <td align="center">LGETYKDHENIVITK</td>
+    <td align="center">-.LGETYKDHENIVITK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">20.0535</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">76</td>
+    <td align="center">GSPMEISLPITLSK</td>
+    <td align="center">-.GSPMEISLPITLSK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">10.6942</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">75</td>
+    <td align="center">YVSLIYTNYEAGK</td>
+    <td align="center">-.YVSLIYTNYEAGK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">10.8000</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">74</td>
+    <td align="center">YVSLIYTNYEAGKDDYVK</td>
+    <td align="center">-.YVSLIYTNYEAGKDDYVK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">30.8184</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">73</td>
+    <td align="center">YVSLIYTNYEVGK</td>
+    <td align="center">-.YVSLIYTNYEVGK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">16.1133</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">72</td>
+    <td align="center">SLIYTNYEVGKDDYVK</td>
+    <td align="center">-.SLIYTNYEVGKDDYVK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">26.7800</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">71</td>
+    <td align="center">YVSLIYTNYEVGKDDYVK</td>
+    <td align="center">-.YVSLIYTNYEVGKDDYVK.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">22.6939</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">70</td>
+    <td align="center">MAQWGNKPIC</td>
+    <td align="center">-.M+16AQWGNKPIC.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">8.8639</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">79</td>
+    <td align="center">LAKVDATEVSDLAQQYGVR</td>
+    <td align="center">-.LAKVDATEVSDLAQQYGVR.-</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">9.2832</td>
+    <td align="center">PEV+</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">78</td>
+    <td align="center">VDATEVSDLAQQYGVR</td>
+    <td align="center">NA</td>
+    <td align="center">R.+43T+28DDLVYLNVMELVR.A</td>
+    <td align="center">Q14289</td>
+    <td align="center">mutation</td>
+    <td align="center">-6.3951</td>
+    <td align="center">PEV-</td>
+    <td align="center">R.+43T+28DDLVYLNVMELVR.A;</td>
+    <td align="center">Q14289;</td>
+  </tr>
+  <tr>
+    <td align="center">32</td>
+    <td align="center">QGTLTEYCSTLMSLPTK</td>
+    <td align="center">QGTLTEYCSTLMSLPTK</td>
+    <td align="center">QGTLTEYCSTLMSLPTK</td>
+    <td align="center">A8MVU1</td>
+    <td align="center">mutation</td>
+    <td align="center">NA</td>
+    <td align="center">PEVexact-reference</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">61</td>
+    <td align="center">MVAVGICR</td>
+    <td align="center">MVAVGICR</td>
+    <td align="center">MVAVGICR</td>
+    <td align="center">P00325</td>
+    <td align="center">mutation</td>
+    <td align="center">NA</td>
+    <td align="center">PEVexact-reference</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">66</td>
+    <td align="center">LLNLLADLVER</td>
+    <td align="center">LLNLLADLVER</td>
+    <td align="center">LLNLLADLVER</td>
+    <td align="center">P30837</td>
+    <td align="center">mutation</td>
+    <td align="center">NA</td>
+    <td align="center">PEVexact-reference</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">67</td>
+    <td align="center">LLNLLADLVERDR</td>
+    <td align="center">LLNLLADLVERDR</td>
+    <td align="center">LLNLLADLVERDR</td>
+    <td align="center">P30837</td>
+    <td align="center">mutation</td>
+    <td align="center">NA</td>
+    <td align="center">PEVexact-reference</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">83</td>
+    <td align="center">MSVTEGGIKYPETTEGDRPK</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">NA</td>
+    <td align="center">PEVunscored</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">16</td>
+    <td align="center">AVPPNNSNAAEDDLPTVELQGLVPR</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">NA</td>
+    <td align="center">PEVunscored</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td align="center">9</td>
+    <td align="center">GPPGLAGAPGLRGGTGPPGPEGGK</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">NA</td>
+    <td align="center">mutation</td>
+    <td align="center">NA</td>
+    <td align="center">PEVunscored</td>
+    <td align="center">-</td>
+    <td align="center">-</td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</body>
+</html>
